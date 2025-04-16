@@ -5,7 +5,7 @@ services:
     plan: free
     repo: https://github.com/cdaniel7789/excalidraw-collaboration
     region: oregon
-    branch: main
+    branch: master
     rootDir: basic
     dockerfilePath: basic/Dockerfile
     healthCheckPath: /
@@ -21,7 +21,7 @@ services:
     plan: free
     repo: https://github.com/cdaniel7789/excalidraw-collaboration
     region: oregon
-    branch: main
+    branch: master
     rootDir: room
     dockerfilePath: room/Dockerfile
     envVars: []
@@ -32,7 +32,7 @@ services:
     plan: free
     repo: https://github.com/cdaniel7789/excalidraw-collaboration
     region: oregon
-    branch: main
+    branch: master
     rootDir: storage
     dockerfilePath: storage/Dockerfile
     envVars: []
