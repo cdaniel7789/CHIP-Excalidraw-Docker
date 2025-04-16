@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: excalidraw-frontend
+    env: docker
+    plan: free
+    repo: https://github.com/cdaniel7789/excalidraw-collaboration
+    region: oregon
+    branch: main
+    rootDir: basic
+    dockerfilePath: basic/Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: VITE_APP_WS_SERVER_URL
+        value: https://excalidraw-room.onrender.com
+      - key: VITE_APP_HTTP_STORAGE_BACKEND_URL
+        value: https://excalidraw-storage.onrender.com/api/v2
+
+  - type: web
+    name: excalidraw-room
+    env: docker
+    plan: free
+    repo: https://github.com/cdaniel7789/excalidraw-collaboration
+    region: oregon
+    branch: main
+    rootDir: room
+    dockerfilePath: room/Dockerfile
+    envVars: []
+
+  - type: web
+    name: excalidraw-storage
+    env: docker
+    plan: free
+    repo: https://github.com/cdaniel7789/excalidraw-collaboration
+    region: oregon
+    branch: main
+    rootDir: storage
+    dockerfilePath: storage/Dockerfile
+    envVars: []
