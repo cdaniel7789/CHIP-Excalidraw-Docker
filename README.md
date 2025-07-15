@@ -1,109 +1,56 @@
-# excalidraw-collaboration
+# AI Agent Orchestrator
 
-Demo:
+This project is an AI agent orchestrator that uses Vertex AI to lead marketing and sales AI agents.
 
-[demo](https://excalidraw-production-4d27.up.railway.app/) on [Railway](https://railway.app?referralCode=HM_ZCO)
+## Features
 
-One click to deploy your excalidraw with collaboration.
+- **Agent Orchestration:** The orchestrator can route tasks to the appropriate agent based on the input.
+- **Marketing and Sales Agents:** The system includes two agents: a marketing agent and a sales agent.
+- **Custom Tools:** The agents can use custom tools, such as a web search tool.
+- **Vertex AI Integration:** The agents are integrated with Vertex AI's generative models.
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/PjQnHs?referralCode=HM_ZCO)
+## Getting Started
 
-Snapshot:
+### Prerequisites
 
-![snapshot](./_assets/snapshot.png)
+- Python 3.12 or later
+- A Google Cloud project with the Vertex AI API enabled
+- Application Default Credentials set up for your environment
 
-Related docs:
+### Installation
 
-- [Self hosted online collaborative drawing platform Excalidraw | Log4D](https://en.blog.alswl.com/2022/10/self-hosted-excalidraw/)
-- [私有化在线协同画图平台 Excalidraw | Log4D](https://blog.alswl.com/2022/10/self-hosted-excalidraw/)
+1. Clone the repository:
+   ```
+   git clone https://github.com/your-username/your-repository.git
+   ```
+2. Create a virtual environment:
+   ```
+   python3 -m venv .venv
+   ```
+3. Activate the virtual environment:
+   ```
+   source .venv/bin/activate
+   ```
+4. Install the dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+5. Create a `.env` file with the following content:
+   ```
+   GOOGLE_CLOUD_PROJECT="your-gcp-project-id"
+   GOOGLE_CLOUD_LOCATION="your-gcp-location"
+   ```
 
-## Deploy (Basic)
+### Usage
 
-Clone, and run:
-
+To run the orchestrator, run the following command:
 ```
-git clone git@github.com:alswl/excalidraw-collaboration.git
-cd excalidraw-collaboration/basic
-
-docker-compose up # run the containers
-
-open "http://localhost" # open browser, and you can using the collbration functions
-```
-
-Browse it:
-
-- open http://127.0.0.1/ ,and you will see the excalidraw page
-- Click the `Live Collaboration` button, and you will see the collaboration page
-- Now you can share the collaboration page with your friends, and you can draw together.
-
-About public network release:
-
-if you want to release your own excalidraw in public network,
-you should modify the `docker-compose.yaml` file,
-Replace the `VITE_APP_HTTP_STORAGE_BACKEND_URL` and `VITE_APP_WS_SERVER_URL` with your own domain.
-
-## Advanced mode
-
-### advanced-nginx
-
-Features:
-
-- Setup with one domain, and use nginx to proxy the requests to the backend services
-- HTTPS support
-
-### traefik (not part of this repo)
-
-A configurable docker-compose example for a traefik setup can be found here:
-
-<https://github.com/Someone0nEarth/excalidraw-self-hosted>
-
-
-## Roadmap
-
-- [x] self-host
-- [x] collaboration feature works
-- [x] docker-compose support
-- [x] no pre-build image, dynamic env
-- [x] upload Docker Hub image
-- [ ] S3 storage support
-- [ ] SSO support
-- [x] HTTPS Demo and
-- [x] HTTPS docs
-- [ ] Helm support
-- [x] online demo
-- [x] one click to deploy Railway
-
-## Upgrade Guide
-
-- v0.15.0 -> v0.16.1
-  - replace `REACT_APP_` env with `VITE_APP_`
-
-## Q & A
-
-### How to deploy on the cloud(aws etc)
-
-The `docker-compose.yaml` file is for local deploy, if you want to deploy on the cloud,
-you should prepare 2 Load Balancer(with HTTPS cert), one for websocket server, one for storage server.
-
-The `VITE_APP_HTTP_STORAGE_BACKEND_URL` is for the Load Balancer URL(HTTPS) for storage,
-and the `VITE_APP_WS_SERVER_URL` is for the Load Balancer URL(HTTPS) for websocket.
-
-Here is a conversation about how to deploy on the aws: https://github.com/alswl/excalidraw-collaboration/issues/22
-
-### generateKey problem
-
-Error message:
-
-```
-TypeError: Cannot read properties of undefined (reading 'generateKey')
+python src/main.py
 ```
 
-Why: The excalidraw is using crypto module of Javascript, the HTTPS is required.
+## Testing
 
-How to solve: use HTTPS to access the page, or use http://localhost instead.
-
-## Contributors
-
-<a href="https://github.com/alswl/excalidraw-collaboration/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=alswl/excalidraw-collaboration" />
-</a>
+To run the unit tests, run the following command:
+```
+python -m unittest discover tests
+```
